@@ -16,11 +16,11 @@ export function App() {
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
 
   return (
-    <div className="relative min-h-screen bg-[#080B14] text-[#F8FAFC] selection:bg-blue-600/30 selection:text-cyan-300">
-      {/* Background Ambience, Grid & Floating Light Motes */}
+    <div className="relative min-h-screen bg-[#080B12] text-[#F5F7FF] selection:bg-[#6485FF]/30 selection:text-[#36C5E8]">
+      {/* Background Ambience, Grid & Minimal Particle Motes */}
       <BackgroundEffects />
 
-      {/* Sticky Navigation */}
+      {/* Sticky Navigation with 7 Core Sections + Resume CTA */}
       <Navbar onOpenResumeModal={() => setIsResumeModalOpen(true)} />
 
       {/* Main Portfolio Sections */}

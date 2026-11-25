@@ -3,19 +3,22 @@ import type { EducationItem, PersonalInfo, TrainingItem } from '../types';
 export const personalData: PersonalInfo = {
   name: 'Govind Kushwaha',
   brand: 'GK.',
-  identity: 'Frontend Developer | Python Full Stack Developer',
+  title: 'Python Full Stack Developer',
   roles: [
-    "I'm Govind Kushwaha",
-    'Frontend Developer',
     'Python Full Stack Developer',
-    'Software Developer',
+    'React Developer',
+    'Software Engineer',
   ],
+  identity: 'Python Full Stack Developer | React Developer | Software Engineering Enthusiast',
+  headline: 'Building Modern Web Applications with Python & React.',
   tagline:
-    'Passionate about building modern, responsive, and user-focused web applications through frontend technologies and Python Full Stack development.',
+    'Final-year Computer Science Engineering student building clean frontends, structured Python backends, and robust database architectures.',
+  careerGoal:
+    'Aspiring Python Full Stack Developer / Software Engineer targeting professional fresher roles by April 2027.',
   bio: [
-    "I'm Govind Kushwaha, a final-year B.Tech Computer Science student passionate about software development and building practical web applications.",
-    'I am developing my expertise in Frontend Development and Python Full Stack Development. I enjoy creating responsive interfaces, working with modern web technologies, and understanding how applications work across frontend, backend, and database layers.',
-    'I believe in learning through practical implementation and continuously improving my technical and problem-solving skills.',
+    "I'm Govind Kushwaha, a final-year B.Tech Computer Science student with a strong interest in software engineering and full-stack web development.",
+    "I'm currently developing my skills in Python Full Stack Development, focusing on Python programming, modern frontend technologies, backend development, REST APIs, and database management.",
+    "I enjoy building practical applications, exploring new technologies, and turning ideas into useful software solutions. My goal is to grow as a Python Full Stack Developer and contribute to real-world software products.",
   ],
   email: 'govindkush749@gmail.com',
   phone: '+91 6393812749',
@@ -23,6 +26,11 @@ export const personalData: PersonalInfo = {
   linkedin: 'https://www.linkedin.com/in/govindkdev',
   location: 'India',
   profileImage: '/images/govind-profile.png',
+  heroBadges: [
+    { label: 'B.Tech CSE | Class of 2027', highlight: true },
+    { label: 'Open to Opportunities', highlight: true },
+  ],
+  heroSkills: ['Python', 'React', 'JavaScript', 'SQL'],
   resume: {
     hasPdf: true,
     pdfUrl: '/resume/Govind_Kushwaha_Resume.pdf',
@@ -31,22 +39,49 @@ export const personalData: PersonalInfo = {
   },
 };
 
+export const aboutCards = [
+  {
+    title: 'Education',
+    detail: 'B.Tech CSE — 2027',
+    institution: 'GCRG Group of Institutions (AKTU)',
+  },
+  {
+    title: 'Specialization',
+    detail: 'Python Full Stack Development',
+    institution: 'Python, Django, FastAPI & React',
+  },
+  {
+    title: 'Focus',
+    detail: 'Software Engineering',
+    institution: 'REST APIs, Databases & Web Architecture',
+  },
+];
+
 export const educationData: EducationItem[] = [
   {
     id: 'btech',
     degree: 'Bachelor of Technology (B.Tech)',
     field: 'Computer Science & Engineering',
     institution: 'GCRG Group of Institutions',
-    affiliation: 'Dr. A.P.J. Abdul Kalam Technical University (AKTU), Lucknow',
+    affiliation: 'Dr. A.P.J. Abdul Kalam Technical University (AKTU)',
     duration: '2023 – 2027',
     score: '7.00 / 10',
     scoreLabel: 'Current CGPA (up to 3rd year)',
     location: 'Lucknow, Uttar Pradesh',
     current: true,
     highlights: [
-      'Focus areas: Data Structures & Algorithms, Object-Oriented Programming, Database Systems, Web Technologies',
+      'Focus areas: Database Management Systems, Object-Oriented Programming, Operating Systems, Computer Networks',
       'Actively applying software engineering principles through academic and practical web projects',
       'Expected graduation: 2027',
+    ],
+    coursework: [
+      'Database Management Systems',
+      'Object-Oriented Programming',
+      'Operating Systems',
+      'Computer Networks',
+      'Web Technologies',
+      'Software Engineering',
+      'Data Structures & Algorithms',
     ],
   },
   {
@@ -79,19 +114,45 @@ export const educationData: EducationItem[] = [
 
 export const trainingData: TrainingItem = {
   id: 'ducat-fullstack',
-  title: 'Python Full Stack Development Training',
+  title: 'Python Full Stack Development',
   provider: 'DUCAT',
-  location: 'Noida, Uttar Pradesh',
-  status: 'Ongoing Professional Training',
+  location: 'Noida',
+  status: 'Ongoing',
   description:
-    'Comprehensive hands-on training focusing on end-to-end web architecture, backend development with Python frameworks, database design, and algorithmic problem-solving.',
+    'Professional technical training focused on Python programming, frontend development, backend application development, database management, and full-stack web development.',
   modules: [
-    'Python Programming & OOP Foundations',
-    'HTML5, Modern CSS3 & Responsive UI Design',
-    'JavaScript (ES6+) & Modern Web APIs',
-    'Django & Flask Web Frameworks',
-    'Relational Databases & MySQL Querying',
-    'RESTful API Architecture & JSON Integration',
-    'Data Structures and Algorithms (DSA) Practice',
+    'Python Programming',
+    'Object-Oriented Programming',
+    'HTML5 and CSS3',
+    'JavaScript',
+    'React',
+    'Django',
+    'FastAPI',
+    'Flask',
+    'MySQL',
+    'Database Management',
+    'REST API Development',
+  ],
+  learningAreas: [
+    {
+      topic: 'Python Programming & OOP',
+      description: 'Core syntax, object-oriented concepts, modular scripts, and algorithmic data flow.',
+    },
+    {
+      topic: 'Frontend Development: HTML5, CSS3 & React',
+      description: 'Modern component-driven UI, responsive design with Tailwind CSS, and reactive state management.',
+    },
+    {
+      topic: 'Backend Development: Django, FastAPI & Flask',
+      description: 'Server routing, MVT patterns, request-response handling, and asynchronous API design.',
+    },
+    {
+      topic: 'Database Engineering: MySQL & SQL',
+      description: 'Relational data modeling, table normalization, schema design, and CRUD operations.',
+    },
+    {
+      topic: 'REST API Development & Integration',
+      description: 'Stateless endpoints, JSON serialization, HTTP status codes, and Postman testing.',
+    },
   ],
 };

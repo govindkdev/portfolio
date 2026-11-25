@@ -5,11 +5,12 @@ import {
   FileDown, 
   Mail, 
   MapPin, 
-  Code2, 
   GraduationCap, 
   Sparkles,
   ArrowRight,
-  Terminal
+  Terminal,
+  CheckCircle2,
+  Code2
 } from 'lucide-react';
 import { personalData } from '../data/personal';
 import { useTypewriter } from '../hooks/useTypewriter';
@@ -21,158 +22,158 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = ({ onOpenResumeModal }) => {
-  const { text, phraseIndex } = useTypewriter({
+  const { text } = useTypewriter({
     phrases: personalData.roles,
     typingSpeed: 70,
     deletingSpeed: 35,
-    pauseDuration: 2200,
+    pauseDuration: 2000,
   });
-
-  // Render styled text depending on the active phrase
-  const renderTypedContent = () => {
-    if (phraseIndex === 0) {
-      if (text.startsWith("I'm ")) {
-        const remainingName = text.slice(4);
-        return (
-          <>
-            <span className="text-white">I'm </span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-300">
-              {remainingName}
-            </span>
-          </>
-        );
-      }
-      return <span className="text-white">{text}</span>;
-    }
-
-    if (phraseIndex === 1) {
-      return (
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-500">
-          {text}
-        </span>
-      );
-    }
-
-    if (phraseIndex === 2) {
-      return (
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400">
-          {text}
-        </span>
-      );
-    }
-
-    // phraseIndex === 3: Software Developer
-    return (
-      <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400">
-        {text}
-      </span>
-    );
-  };
 
   return (
     <section 
       id="home" 
-      className="relative min-h-[92vh] flex items-center justify-center pt-28 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden"
+      className="relative min-h-[92vh] flex items-center justify-center pt-28 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden bg-[#080B12]"
     >
-      <div className="max-w-7xl mx-auto w-full">
+      {/* Background ambient lighting - subtle & refined */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#6485FF]/8 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#9475F5]/8 rounded-full blur-[140px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto w-full relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
-          {/* LEFT COLUMN: Hero Presentation & Animated Sequence */}
+          {/* LEFT COLUMN: Hero Presentation */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="lg:col-span-7 flex flex-col justify-center text-left"
           >
-            {/* Status Pill */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#101827]/90 border border-[#263247] w-fit mb-6 shadow-[0_0_15px_rgba(59,130,246,0.15)]">
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
-              </span>
-              <span className="text-xs font-mono font-medium text-slate-300">
-                Available for Frontend &amp; Full Stack Roles
-              </span>
+            {/* Small Greeting & Status */}
+            <div className="flex flex-wrap items-center gap-3 mb-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0D1421] border border-[rgba(148,163,184,0.14)] text-xs font-mono tracking-wider text-[#36C5E8]">
+                <Terminal className="w-3.5 h-3.5" />
+                <span>HELLO, I&apos;M</span>
+              </div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#111B2B] border border-emerald-500/30 text-xs font-mono text-emerald-400">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                </span>
+                <span>Open to Opportunities</span>
+              </div>
             </div>
 
-            {/* Sub-headline greeting */}
-            <div className="flex items-center gap-2 text-sm font-mono text-cyan-400 mb-2">
-              <Terminal className="w-4 h-4" />
-              <span>const developer = &quot;Govind Kushwaha&quot;;</span>
-            </div>
-
-            {/* Dynamic Typewriter Heading with fixed line height to eliminate layout shift */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white mb-6 min-h-[1.25em] flex items-center flex-wrap leading-tight">
-              <span>{renderTypedContent()}</span>
-              <span 
-                className="inline-block w-[3.5px] h-[0.9em] ml-1.5 bg-cyan-400 rounded-sm animate-pulse" 
-                aria-hidden="true" 
-              />
+            {/* Name Heading */}
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-extrabold tracking-tight text-[#F5F7FF] mb-2">
+              {personalData.name}
             </h1>
 
-            {/* Supporting Bio Paragraph */}
-            <p className="text-base sm:text-lg text-[#94A3B8] leading-relaxed max-w-2xl mb-8 font-normal">
-              {personalData.tagline}
-            </p>
+            {/* Main Title & Typewriter */}
+            <div className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#6485FF] via-[#9475F5] to-[#36C5E8] mb-4 min-h-[1.3em] flex items-center">
+              <span>{text}</span>
+              <span 
+                className="inline-block w-[3px] h-[0.9em] ml-1.5 bg-[#36C5E8] rounded-sm animate-pulse" 
+                aria-hidden="true" 
+              />
+            </div>
 
-            {/* Quick Context Highlights */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8 max-w-xl">
-              <div className="flex items-center gap-2 p-2.5 rounded-xl bg-[#111827]/70 border border-[#263247]/80">
-                <GraduationCap className="w-4 h-4 text-blue-400 shrink-0" />
-                <span className="text-xs text-slate-300 font-medium">B.Tech CSE (2027)</span>
-              </div>
-              <div className="flex items-center gap-2 p-2.5 rounded-xl bg-[#111827]/70 border border-[#263247]/80">
-                <Code2 className="w-4 h-4 text-purple-400 shrink-0" />
-                <span className="text-xs text-slate-300 font-medium">React &amp; Python Stack</span>
-              </div>
-              <div className="flex items-center gap-2 p-2.5 rounded-xl bg-[#111827]/70 border border-[#263247]/80 col-span-2 sm:col-span-1">
-                <MapPin className="w-4 h-4 text-cyan-400 shrink-0" />
-                <span className="text-xs text-slate-300 font-medium">India</span>
+            {/* Supporting Headline */}
+            <h2 className="text-lg sm:text-xl font-medium text-[#F5F7FF]/90 mb-4">
+              {personalData.headline}
+            </h2>
+
+            {/* Introduction Paragraphs */}
+            <div className="space-y-3 text-sm sm:text-base text-[#9AA8BC] leading-relaxed max-w-2xl mb-6">
+              <p>
+                &ldquo;I&apos;m Govind Kushwaha, a final-year B.Tech Computer Science student passionate about software development and full-stack engineering.
+              </p>
+              <p>
+                I&apos;m developing my skills in Python programming, frontend development, backend technologies, REST APIs, and database management while building practical web applications.&rdquo;
+              </p>
+            </div>
+
+            {/* Additional Information Badges */}
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-6">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#111B2B] border border-[rgba(148,163,184,0.14)] text-xs font-mono text-[#6485FF]">
+                <GraduationCap className="w-3.5 h-3.5 text-[#6485FF]" />
+                B.Tech CSE | Class of 2027
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#111B2B] border border-[rgba(148,163,184,0.14)] text-xs font-mono text-[#36C5E8]">
+                <MapPin className="w-3.5 h-3.5 text-[#36C5E8]" />
+                GCRG Group of Institutions, Lucknow
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#111B2B] border border-[rgba(148,163,184,0.14)] text-xs font-mono text-emerald-400">
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                India
+              </span>
+            </div>
+
+            {/* Technology Highlights: Python | React | JavaScript | SQL */}
+            <div className="mb-8">
+              <span className="text-xs font-mono text-[#9AA8BC]/70 uppercase tracking-wider block mb-2">
+                Technology Highlights:
+              </span>
+              <div className="flex flex-wrap items-center gap-2">
+                {personalData.heroSkills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-[#0D1421] border border-[rgba(148,163,184,0.14)] hover:border-[#6485FF]/50 text-xs font-mono text-[#F5F7FF] transition-colors"
+                  >
+                    <Code2 className="w-3 h-3 text-[#36C5E8]" />
+                    {skill}
+                  </span>
+                ))}
               </div>
             </div>
 
-            {/* HERO BUTTONS */}
-            <div className="flex flex-wrap items-center gap-4 mb-8">
-              {/* Explore Projects Button */}
+            {/* HERO BUTTONS: Explore Projects, Download Resume, Contact Me */}
+            <div className="flex flex-wrap items-center gap-3.5 mb-8">
+              {/* 1. Explore Projects (Primary button) */}
               <a
                 href="#projects"
-                className="group inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 shadow-[0_0_25px_rgba(59,130,246,0.35)] hover:shadow-[0_0_35px_rgba(139,92,246,0.55)] border border-blue-400/30 transition-all duration-300 transform hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm text-white bg-[#6485FF] hover:bg-[#5274ee] shadow-[0_0_20px_rgba(100,133,255,0.3)] hover:shadow-[0_0_30px_rgba(100,133,255,0.5)] border border-[#6485FF]/30 transition-all duration-300 transform hover:-translate-y-0.5"
               >
-                <FolderGit2 className="w-4 h-4 text-blue-200 group-hover:rotate-6 transition-transform" />
-                <span>Explore My Projects</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <FolderGit2 className="w-4 h-4 text-white" />
+                <span>Explore Projects</span>
+                <ArrowRight className="w-4 h-4" />
               </a>
 
-              {/* Download / View Resume Button */}
-              <button
-                type="button"
-                onClick={() => {
-                  if (onOpenResumeModal) {
-                    onOpenResumeModal();
-                  } else {
-                    const el = document.getElementById('resume');
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm text-slate-200 hover:text-white bg-[#101827]/90 hover:bg-[#172033] border border-[#263247] hover:border-purple-500/50 shadow-sm transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer"
-              >
-                <FileDown className="w-4 h-4 text-purple-400" />
-                <span>Download Resume</span>
-              </button>
+              {/* 2. Download Resume (Secondary button) */}
+              <div className="inline-flex rounded-xl shadow-sm">
+                <a
+                  href={personalData.resume.pdfUrl}
+                  download={personalData.resume.filename}
+                  className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl font-semibold text-sm text-[#F5F7FF] bg-[#111B2B] hover:bg-[#162235] border border-[rgba(148,163,184,0.14)] hover:border-[#9475F5]/60 transition-all duration-300 transform hover:-translate-y-0.5"
+                  title="Download Resume PDF"
+                >
+                  <FileDown className="w-4 h-4 text-[#9475F5]" />
+                  <span>Download Resume</span>
+                </a>
+                {onOpenResumeModal && (
+                  <button
+                    type="button"
+                    onClick={onOpenResumeModal}
+                    className="ml-1 px-3 py-3.5 rounded-xl text-xs font-mono text-[#9AA8BC] hover:text-[#F5F7FF] bg-[#0D1421] hover:bg-[#111B2B] border border-[rgba(148,163,184,0.14)] hover:border-[#6485FF]/40 transition-all cursor-pointer"
+                    title="Preview Resume"
+                  >
+                    Preview
+                  </button>
+                )}
+              </div>
 
-              {/* Contact Me Button */}
+              {/* 3. Contact Me (Outline or subtle button) */}
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm text-slate-300 hover:text-cyan-300 bg-transparent hover:bg-white/5 border border-[#263247] hover:border-cyan-500/40 transition-all duration-300"
+                className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl font-semibold text-sm text-[#9AA8BC] hover:text-[#F5F7FF] bg-transparent hover:bg-white/5 border border-[rgba(148,163,184,0.14)] hover:border-[#36C5E8]/50 transition-all duration-300"
               >
-                <Mail className="w-4 h-4 text-cyan-400" />
+                <Mail className="w-4 h-4 text-[#36C5E8]" />
                 <span>Contact Me</span>
               </a>
             </div>
 
-            {/* SOCIAL PROFILES WITH CUSTOM INTERACTIVE ICONS */}
+            {/* Social Links */}
             <div className="flex items-center gap-3">
-              <span className="text-xs font-mono text-[#64748B] uppercase tracking-wider mr-2">
+              <span className="text-xs font-mono text-[#9AA8BC]/70 uppercase tracking-wider mr-2">
                 Connect:
               </span>
               <InteractiveIcon
@@ -196,73 +197,70 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResumeModal }) => {
                 size="md"
                 href={`mailto:${personalData.email}`}
                 ariaLabel="Send Email to Govind Kushwaha"
-                icon={<Mail className="w-5 h-5" />}
+                icon={<Mail className="w-5 h-5 text-[#9475F5]" />}
               />
             </div>
           </motion.div>
 
-          {/* RIGHT COLUMN: Official Professional Photograph with Halo & Frame */}
+          {/* RIGHT COLUMN: Professional Photograph */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.2 }}
             className="lg:col-span-5 flex items-center justify-center relative"
           >
-            {/* Ambient Background Halos behind portrait */}
-            <div className="absolute w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full bg-blue-600/20 blur-[90px] -top-6 -left-6 pointer-events-none" />
-            <div className="absolute w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full bg-purple-600/25 blur-[100px] -bottom-6 -right-6 pointer-events-none" />
-            <div className="absolute w-64 h-64 rounded-full bg-cyan-400/15 blur-[80px] pointer-events-none" />
+            {/* Ambient Halos */}
+            <div className="absolute w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full bg-[#6485FF]/15 blur-[90px] -top-6 -left-6 pointer-events-none" />
+            <div className="absolute w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full bg-[#9475F5]/15 blur-[100px] -bottom-6 -right-6 pointer-events-none" />
 
-            {/* Premium Portrait Container */}
+            {/* Portrait Card */}
             <div className="relative group max-w-sm sm:max-w-md w-full">
-              {/* Outer Decorative Gradient Border */}
-              <div className="relative p-1 rounded-3xl bg-gradient-to-tr from-blue-600 via-purple-600 to-cyan-400 shadow-[0_0_50px_rgba(59,130,246,0.35),0_0_80px_rgba(139,92,246,0.25)] transition-all duration-500 group-hover:shadow-[0_0_70px_rgba(59,130,246,0.5),0_0_100px_rgba(139,92,246,0.4)]">
+              {/* Card Container with subtle gradient border */}
+              <div className="relative p-1 rounded-3xl bg-gradient-to-tr from-[#6485FF]/40 via-[#9475F5]/30 to-[#36C5E8]/40 shadow-[0_0_40px_rgba(100,133,255,0.18)] transition-all duration-500 group-hover:shadow-[0_0_60px_rgba(100,133,255,0.3)]">
                 
                 {/* Inner Bezel */}
-                <div className="relative rounded-[22px] overflow-hidden bg-[#080B14]">
+                <div className="relative rounded-[22px] overflow-hidden bg-[#080B12]">
                   <img
                     src={personalData.profileImage}
-                    alt="Govind Kushwaha - Professional Tech Portrait"
+                    alt="Govind Kushwaha - Python Full Stack Developer"
                     className="w-full h-auto aspect-square object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
-                    onError={(e) => {
-                      const target = e.currentTarget;
-                      target.src = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80';
-                    }}
+                    loading="eager"
                   />
 
-                  {/* Soft bottom vignette overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#080B14] via-transparent to-transparent opacity-40 pointer-events-none" />
+                  {/* Soft Vignette Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#080B12]/80 via-transparent to-transparent opacity-60 pointer-events-none" />
                 </div>
               </div>
 
-              {/* Floating Tech Badges */}
+              {/* Floating Badge 1: Python Full Stack Developer */}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.5, duration: 0.5 }}
-                className="absolute -bottom-4 -left-4 sm:-bottom-5 sm:-left-5 bg-[#101827]/95 border border-[#263247] p-3 rounded-2xl shadow-xl backdrop-blur-xl flex items-center gap-3"
+                className="absolute -bottom-4 -left-3 sm:-bottom-5 sm:-left-4 bg-[#111B2B]/95 border border-[rgba(148,163,184,0.14)] p-3 rounded-2xl shadow-xl backdrop-blur-xl flex items-center gap-3"
               >
-                <div className="w-9 h-9 rounded-xl bg-blue-600/20 border border-blue-500/40 flex items-center justify-center text-blue-400">
+                <div className="w-9 h-9 rounded-xl bg-[#6485FF]/20 border border-[#6485FF]/40 flex items-center justify-center text-[#6485FF]">
                   <Sparkles className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="text-[11px] font-mono text-[#94A3B8]">Specialization</div>
-                  <div className="text-xs font-bold text-white">Frontend &amp; Python Stack</div>
+                  <div className="text-[10px] font-mono text-[#9AA8BC]">Specialization</div>
+                  <div className="text-xs font-bold text-[#F5F7FF]">Python Full Stack Developer</div>
                 </div>
               </motion.div>
 
+              {/* Floating Badge 2: Class of 2027 */}
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.6, duration: 0.5 }}
-                className="absolute -top-4 -right-4 sm:-top-5 sm:-right-5 bg-[#101827]/95 border border-[#263247] p-3 rounded-2xl shadow-xl backdrop-blur-xl flex items-center gap-3"
+                className="absolute -top-4 -right-3 sm:-top-5 sm:-right-4 bg-[#111B2B]/95 border border-[rgba(148,163,184,0.14)] p-3 rounded-2xl shadow-xl backdrop-blur-xl flex items-center gap-3"
               >
-                <div className="w-9 h-9 rounded-xl bg-purple-600/20 border border-purple-500/40 flex items-center justify-center text-purple-400">
+                <div className="w-9 h-9 rounded-xl bg-[#9475F5]/20 border border-[#9475F5]/40 flex items-center justify-center text-[#9475F5]">
                   <GraduationCap className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="text-[11px] font-mono text-[#94A3B8]">B.Tech Final Year</div>
-                  <div className="text-xs font-bold text-white">CSE • AKTU (2027)</div>
+                  <div className="text-[10px] font-mono text-[#9AA8BC]">Graduation 2027</div>
+                  <div className="text-xs font-bold text-[#F5F7FF]">B.Tech CSE • AKTU</div>
                 </div>
               </motion.div>
             </div>

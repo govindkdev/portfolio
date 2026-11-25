@@ -25,8 +25,8 @@ export const BackgroundEffects: React.FC = () => {
 
     window.addEventListener('resize', handleResize);
 
-    // Subtle particles setup
-    const particleCount = Math.min(35, Math.floor(width / 40));
+    // Subtle particles setup (restrained, minimal)
+    const particleCount = Math.min(25, Math.floor(width / 50));
     const particles: {
       x: number;
       y: number;
@@ -37,17 +37,17 @@ export const BackgroundEffects: React.FC = () => {
       alpha: number;
     }[] = [];
 
-    const colors = ['#3B82F6', '#8B5CF6', '#22D3EE', '#94A3B8'];
+    const colors = ['#6485FF', '#9475F5', '#36C5E8', '#9AA8BC'];
 
     for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        radius: Math.random() * 1.5 + 0.5,
-        vx: (Math.random() - 0.5) * 0.25,
-        vy: (Math.random() - 0.5) * 0.25,
+        radius: Math.random() * 1.2 + 0.4,
+        vx: (Math.random() - 0.5) * 0.18,
+        vy: (Math.random() - 0.5) * 0.18,
         color: colors[Math.floor(Math.random() * colors.length)],
-        alpha: Math.random() * 0.4 + 0.1,
+        alpha: Math.random() * 0.3 + 0.08,
       });
     }
 
@@ -89,36 +89,30 @@ export const BackgroundEffects: React.FC = () => {
   }, []);
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-[#080B12]">
       {/* Subtle grid pattern */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-[0.4] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
+      <div className="absolute inset-0 bg-grid-pattern opacity-[0.25] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
 
-      {/* Ambient Top Glow: Electric Blue & Royal Purple Blend */}
+      {/* Ambient Top Glow: Primary & Secondary Accent Blend */}
       <div 
-        className="absolute -top-[15%] left-[10%] w-[500px] h-[500px] md:w-[700px] md:h-[700px] rounded-full blur-[140px] opacity-20 pointer-events-none"
-        style={{ background: 'radial-gradient(circle, #3B82F6 0%, #1D4ED8 40%, transparent 70%)' }}
+        className="absolute -top-[12%] left-[15%] w-[450px] h-[450px] md:w-[600px] md:h-[600px] rounded-full blur-[140px] opacity-15 pointer-events-none"
+        style={{ background: 'radial-gradient(circle, #6485FF 0%, transparent 70%)' }}
       />
       <div 
-        className="absolute -top-[10%] right-[10%] w-[500px] h-[500px] md:w-[650px] md:h-[650px] rounded-full blur-[150px] opacity-25 pointer-events-none"
-        style={{ background: 'radial-gradient(circle, #8B5CF6 0%, #6D28D9 40%, transparent 70%)' }}
+        className="absolute -top-[8%] right-[15%] w-[450px] h-[450px] md:w-[550px] md:h-[550px] rounded-full blur-[140px] opacity-15 pointer-events-none"
+        style={{ background: 'radial-gradient(circle, #9475F5 0%, transparent 70%)' }}
       />
 
       {/* Mid-section subtle cyan ambient light */}
       <div 
-        className="absolute top-[45%] left-[2%] w-[450px] h-[450px] rounded-full blur-[160px] opacity-15 pointer-events-none"
-        style={{ background: 'radial-gradient(circle, #22D3EE 0%, transparent 70%)' }}
-      />
-
-      {/* Bottom purple glow for contact */}
-      <div 
-        className="absolute bottom-0 right-[5%] w-[500px] h-[500px] rounded-full blur-[150px] opacity-15 pointer-events-none"
-        style={{ background: 'radial-gradient(circle, #8B5CF6 0%, transparent 70%)' }}
+        className="absolute top-[45%] left-[5%] w-[400px] h-[400px] rounded-full blur-[160px] opacity-10 pointer-events-none"
+        style={{ background: 'radial-gradient(circle, #36C5E8 0%, transparent 70%)' }}
       />
 
       {/* Canvas for lightweight floating dust motes */}
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full opacity-60"
+        className="absolute inset-0 w-full h-full opacity-50"
       />
     </div>
   );
